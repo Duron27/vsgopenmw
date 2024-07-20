@@ -20,8 +20,8 @@ endmacro()
 if (NOT OPENMW_USE_SYSTEM_VSG)
     include(FetchContent)
     FetchContent_Declare(vsg
-            URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.1.1.zip
-            #URL_HASH SHA3_256=d6a9cb1058fabf8c9174138e7c111b365e17c5a34468709144b7e765fb2c9d6e
+            URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.0.9.zip
+            URL_HASH SHA3_256=d6a9cb1058fabf8c9174138e7c111b365e17c5a34468709144b7e765fb2c9d6e
             SOURCE_DIR fetched/vsg
     )
     FetchContent_MakeAvailableExcludeFromAll(vsg)
