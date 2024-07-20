@@ -26,17 +26,19 @@ if (NOT OPENMW_USE_SYSTEM_VSG)
     )
     FetchContent_MakeAvailableExcludeFromAll(vsg)
 
-    # Apply the patch
-    execute_process(
-        COMMAND patch -p1 -i ${CMAKE_SOURCE_DIR}/android_rotate.patch
-        WORKING_DIRECTORY ${vsg_SOURCE_DIR}
-    RESULT_VARIABLE patch_result
-    )
-    if(NOT ${patch_result} EQUAL 0)
-        message(FATAL_ERROR "Patch failed!")
-    endif()
+    # Apply all patches in the directory
+    file(GLOB patches "${CMAKE_SOURCE_DIR}/*.patch")
+    foreach(patch ${patches})
+        execute_process(
+            COMMAND patch -p1 -i ${patch}
+            WORKING_DIRECTORY ${vsg_SOURCE_DIR}
+            RESULT_VARIABLE patch_result
+        )
+        if(NOT ${patch_result} EQUAL 0)
+            message(FATAL_ERROR "Patch ${patch} failed!")
+        endif()
+    endforeach()
 endif()
-
 
 if (NOT OPENMW_USE_SYSTEM_VSGXCHANGE)
     include(FetchContent)
