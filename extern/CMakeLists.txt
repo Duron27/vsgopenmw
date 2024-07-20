@@ -28,9 +28,13 @@ if (NOT OPENMW_USE_SYSTEM_VSG)
 
     # Apply the patch
     execute_process(
-        COMMAND patch -p1 -i ${CMAKE_SOURCE_DIR}/path_to_your_patch_file
+        COMMAND patch -p1 -i ${CMAKE_SOURCE_DIR}/patches/vsg/android_rotate.patch
         WORKING_DIRECTORY ${vsg_SOURCE_DIR}
+    RESULT_VARIABLE patch_result
     )
+    if(NOT ${patch_result} EQUAL 0)
+        message(FATAL_ERROR "Patch failed!")
+    endif()
 endif()
 
 
