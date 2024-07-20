@@ -23,8 +23,7 @@ if (NOT OPENMW_USE_SYSTEM_VSG)
             URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.0.9.zip
             URL_HASH SHA3_256=d6a9cb1058fabf8c9174138e7c111b365e17c5a34468709144b7e765fb2c9d6e
             SOURCE_DIR fetched/vsg
-    )
-    FetchContent_MakeAvailableExcludeFromAll(vsg)
+    )    
 
     # Apply all patches in the directory
     file(GLOB patches "${CMAKE_SOURCE_DIR}/*.patch")
@@ -38,6 +37,7 @@ if (NOT OPENMW_USE_SYSTEM_VSG)
             message(FATAL_ERROR "Patch ${patch} failed!")
         endif()
     endforeach()
+    FetchContent_MakeAvailableExcludeFromAll(vsg)
 endif()
 
 if (NOT OPENMW_USE_SYSTEM_VSGXCHANGE)
