@@ -25,7 +25,14 @@ if (NOT OPENMW_USE_SYSTEM_VSG)
             SOURCE_DIR fetched/vsg
     )
     FetchContent_MakeAvailableExcludeFromAll(vsg)
+
+    # Apply the patch
+    execute_process(
+        COMMAND patch -p1 -i ${CMAKE_SOURCE_DIR}/path_to_your_patch_file
+        WORKING_DIRECTORY ${vsg_SOURCE_DIR}
+    )
 endif()
+
 
 if (NOT OPENMW_USE_SYSTEM_VSGXCHANGE)
     include(FetchContent)
