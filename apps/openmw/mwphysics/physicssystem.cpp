@@ -1,6 +1,5 @@
 #include "physicssystem.hpp"
 
-#include <algorithm>
 #include <memory>
 #include <vector>
 
