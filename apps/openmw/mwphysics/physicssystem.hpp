@@ -2,6 +2,7 @@
 #define OPENMW_MWPHYSICS_PHYSICSSYSTEM_H
 
 #include <array>
+#include <algorithm>
 #include <functional>
 #include <map>
 #include <memory>
