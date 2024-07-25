@@ -44,6 +44,7 @@ std::optional<OMW::Arguments> parseArgs(int argc, char** argv, Files::Configurat
 
     cfgMgr.readConfiguration(variables, desc);
 
+    setupLogging(cfgMgr.getLogPath(), "OpenMW");
     Log(Debug::Info) << Version::getOpenmwVersionDescription();
 
     Settings::Manager::load(cfgMgr);
