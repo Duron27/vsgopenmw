@@ -1,4 +1,5 @@
 #include <components/debug/debuglog.hpp>
+#include <components/debug/debugging.hpp>
 #include <components/fallback/fallback.hpp>
 #include <components/fallback/validate.hpp>
 #include <components/files/configurationmanager.hpp>
