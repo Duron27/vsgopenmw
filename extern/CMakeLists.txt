@@ -20,25 +20,11 @@ endmacro()
 if (NOT OPENMW_USE_SYSTEM_VSG)
     include(FetchContent)
     FetchContent_Declare(vsg
-            URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.1.6.zip
-            URL_HASH SHA3_256=4b7f44b6729996df2540f9e43cc86d847c336713782efb5112a2f59076539773
+            URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/heads/master.zip
+            URL_HASH SHA3_256=9d84cddb31c167e2e1bad84cc1826e0440bb7138c0dcc61b021b6a6ebc5842c5
             SOURCE_DIR fetched/vsg
     )
     FetchContent_MakeAvailableExcludeFromAll(vsg)
-
-    # Apply all patches in the directory
-    file(GLOB patches "${CMAKE_SOURCE_DIR}/*.patch")
-    foreach(patch ${patches})
-        execute_process(
-            COMMAND patch -p1 -i ${patch}
-            WORKING_DIRECTORY ${vsg_SOURCE_DIR}
-            RESULT_VARIABLE patch_result
-        )
-        if(NOT ${patch_result} EQUAL 0)
-            message(FATAL_ERROR "Patch ${patch} failed!")
-        endif()
-    endforeach()
-    
 endif()
 
 if (NOT OPENMW_USE_SYSTEM_VSGXCHANGE)
