@@ -5,6 +5,10 @@ set(GAME
     options.cpp
 )
 
+if (ANDROID)
+    set(GAME ${GAME} android_main.cpp)
+endif()
+
 set(GAME_HEADER
     arguments.hpp
     options.hpp
@@ -118,6 +122,7 @@ add_openmw_dir (mwbase
     )
 
 # Main executable
+
 add_library(openmw-lib STATIC
     ${OPENMW_FILES}
     ${GAME_HEADER}
@@ -192,6 +197,7 @@ if (ANDROID)
     target_link_libraries(openmw-lib EGL android log z)
 endif()
 
+
 if (USE_SYSTEM_TINYXML)
     target_link_libraries(openmw-lib ${TinyXML_LIBRARIES})
 endif()
@@ -239,5 +245,5 @@ if (BUILD_WITH_CODE_COVERAGE)
 endif()
 
 if (WIN32)
-    INSTALL(TARGETS openmw-lib RUNTIME DESTINATION ".")
+    INSTALL(TARGETS openmw RUNTIME DESTINATION ".")
 endif (WIN32)
